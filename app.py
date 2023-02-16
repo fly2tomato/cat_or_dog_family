@@ -1,3 +1,4 @@
+!pip install fastai 
 from fastai.vision.all import *
 import gradio as gr
 

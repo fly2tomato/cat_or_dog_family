@@ -1,5 +1,4 @@
-!pip install fastai 
-from fastai.vision.all import *
+from fastai.learner import load_learner
 import gradio as gr
 
 

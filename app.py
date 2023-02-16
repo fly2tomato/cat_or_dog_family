@@ -1,6 +1,7 @@
 from fastai.vision.all import *
 import gradio as gr
 
+
 learn = load_learner('modelcat_dog.pkl')
 
 categories = ('Cat','Dog','Lion','None','Tiger','Wolf')

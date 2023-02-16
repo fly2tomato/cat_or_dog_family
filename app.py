@@ -1,7 +1,17 @@
+from fastai.vision.all import *
 import gradio as gr
 
-def greet(name):
-    return "Hello " + name + "!!"
+learn = load_learner('modelcat_dog.pkl')
 
-iface = gr.Interface(fn=greet, inputs="text", outputs="text")
-iface.launch()
+categories = ('Cat','Dog','Lion','None','Tiger','Wolf')
+
+def classify_img(image):
+  pred,idx,probs = learn.predict(image)
+  return (dict(zip(categories,map(float,probs))))
+
+
+image = gr.inputs.Image(shape=(192,192))
+label = gr.outputs.Label()
+examples = ['cat.jpg','food.jpg','husky.jpg','tiger.jpg','cat_dog.jpg']
+intf = gr.Interface(fn=classify_img, inputs=image, outputs=label, examples=examples)
+intf.launch(inline=False)

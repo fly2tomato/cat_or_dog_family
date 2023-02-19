@@ -2,7 +2,7 @@ from fastai.learner import load_learner
 import gradio as gr
 
 
-learn = load_learner('modelcat_dog.pkl')
+learn = load_learner('model_cat_dog.pkl')
 
 categories = ('Cat','Dog','Lion','None','Tiger','Wolf')
 

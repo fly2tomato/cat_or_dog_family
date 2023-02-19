@@ -13,6 +13,8 @@ def classify_img(image):
 
 image = gr.inputs.Image(shape=(192,192))
 label = gr.outputs.Label()
-examples = ['cat.jpg','food.jpg','husky.jpg','tiger.jpg','cat_dog.jpg']
-intf = gr.Interface(fn=classify_img, inputs=image, outputs=label, examples=examples)
+examples = ['cat.jpg','food.jpg','tiger.jpg','cat_dog.jpg']
+title = 'Simple classifier'
+description = 'The model classifies input images into Dog, Cat, Lion, Tiger, Wolf classes. If the input image is not in target class, it is classified as None'
+intf = gr.Interface(fn=classify_img, inputs=image, outputs=label,title=title,description=description,examples=examples)
 intf.launch(inline=False)

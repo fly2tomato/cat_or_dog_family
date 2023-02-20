@@ -1,8 +1,15 @@
 from fastai.learner import load_learner
 import gradio as gr
+import requests
 
 
-learn = load_learner('https://openmmlab-open.oss-cn-shanghai.aliyuncs.com/model-center/checkpoints/139430/model_cat_dog.pkl')
+model_url = 'https://openmmlab-open.oss-cn-shanghai.aliyuncs.com/model-center/checkpoints/139430/model_cat_dog.pkl'
+filename = "model_cat_dog.pkl"
+response = requests.get(model_url)
+with open(filename, 'wb') as f:
+  f.write(response.content)
+
+learn = load_learner(filename)
 
 categories = ('Cat','Dog','Lion','None','Tiger','Wolf')
 
